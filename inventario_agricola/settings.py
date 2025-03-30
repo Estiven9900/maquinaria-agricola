@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tailwind',
-    'theme',
+    #'theme',
     'maquinaria_agricola',
+    'django_browser_reload',
 ]
 
 MIDDLEWARE = [
@@ -134,5 +135,5 @@ TAILWIND_APP_NAME = 'theme'
 
 # Internal IPs for debugging
 INTERNAL_IPS = [
-    '127-0-0-1',
+    '127.0.0.1',
 ]
