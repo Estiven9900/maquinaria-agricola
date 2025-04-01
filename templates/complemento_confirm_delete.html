@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Eliminar Complemento{% endblock %}
+{% block content %}
+    <h1 class="mb-4">Eliminar Complemento</h1>
+    <p class="mb-4">¿Estás seguro de eliminar el complemento {{ complemento }}?</p>
+    <form method="post" class="card p-4">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'complemento_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock %}
