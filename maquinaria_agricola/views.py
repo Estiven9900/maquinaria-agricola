@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.forms import modelform_factory
 from .models import Maquina, Complemento, Trabajador, Operacion
+from django.shortcuts import render
+
+#Vista para home
+def home(request):
+    return render(request, 'home.html')
 
 # Vistas para Máquinas
 def maquina_list(request):
