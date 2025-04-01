@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+    <h1 class="mb-4">Bienvenido al Inventario Agrícola</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="{% url 'maquina_list' %}" class="btn btn-primary w-100 mb-3">Gestionar Máquinas</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'complemento_list' %}" class="btn btn-primary w-100 mb-3">Gestionar Complementos</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'trabajador_list' %}" class="btn btn-primary w-100 mb-3">Gestionar Trabajadores</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'operacion_list' %}" class="btn btn-primary w-100 mb-3">Gestionar Operaciones</a>
+        </div>
+    </div>
+{% endblock %}
