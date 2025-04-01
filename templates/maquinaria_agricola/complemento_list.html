@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Complementos{% endblock %}
+{% block content %}
+    <h2 class="mb-4">Lista de Complementos</h2>
+    {% if perms.maquinaria_agricola.add_complemento %}
+        <a href="{% url 'complemento_create' %}" class="btn btn-success mb-3">Crear Complemento</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for complemento in complementos %}
+                <tr>
+                    <td>{{ complemento.nombre }}</td>
+                    <td>{{ complemento.tipo }}</td>
+                    <td>{{ complemento.estado }}</td>
+                    <td>
+                        {% if perms.maquinaria_agricola.change_complemento %}
+                            <a href="{% url 'complemento_update' complemento.pk %}" class="btn btn-sm btn-primary">Editar</a>
+                        {% endif %}
+                        {% if perms.maquinaria_agricola.delete_complemento %}
+                            <a href="{% url 'complemento_delete' complemento.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No hay complementos registrados.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

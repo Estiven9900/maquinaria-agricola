@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}{% if form.instance.pk %}Editar Operación{% else %}Crear Operación{% endif %}{% endblock %}
+{% block content %}
+    <h2 class="mb-4">{% if form.instance.pk %}Editar Operación{% else %}Crear Operación{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url 'operacion_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock %}

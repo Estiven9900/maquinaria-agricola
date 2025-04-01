@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Trabajadores{% endblock %}
+{% block content %}
+    <h2 class="mb-4">Lista de Trabajadores</h2>
+    {% if perms.maquinaria_agricola.add_trabajador %}
+        <a href="{% url 'trabajador_create' %}" class="btn btn-success mb-3">Crear Trabajador</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Rol</th>
+                <th>Cédula</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trabajador in trabajadores %}
+                <tr>
+                    <td>{{ trabajador.nombre }}</td>
+                    <td>{{ trabajador.apellido }}</td>
+                    <td>{{ trabajador.id_rol }}</td>
+                    <td>{{ trabajador.cedula }}</td>
+                    <td>
+                        {% if perms.maquinaria_agricola.change_trabajador %}
+                            <a href="{% url 'trabajador_update' trabajador.pk %}" class="btn btn-sm btn-primary">Editar</a>
+                        {% endif %}
+                        {% if perms.maquinaria_agricola.delete_trabajador %}
+                            <a href="{% url 'trabajador_delete' trabajador.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No hay trabajadores registrados.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

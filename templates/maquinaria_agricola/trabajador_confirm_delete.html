@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Eliminar Trabajador{% endblock %}
 {% block content %}
-    <h1 class="mb-4">Eliminar Trabajador</h1>
-    <p class="mb-4">¿Estás seguro de eliminar al trabajador {{ trabajador }}?</p>
-    <form method="post" class="card p-4">
+    <h2 class="mb-4">Eliminar Trabajador</h2>
+    <p>¿Estás seguro de que deseas eliminar al trabajador "{{ trabajador }}"?</p>
+    <form method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Eliminar</button>
         <a href="{% url 'trabajador_list' %}" class="btn btn-secondary">Cancelar</a>

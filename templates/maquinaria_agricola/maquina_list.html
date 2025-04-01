@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Máquinas{% endblock %}
+{% block content %}
+    <h2 class="mb-4">Lista de Máquinas</h2>
+    {% if perms.maquinaria_agricola.add_maquina %}
+        <a href="{% url 'maquina_create' %}" class="btn btn-success mb-3">Crear Máquina</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Serial</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for maquina in maquinas %}
+                <tr>
+                    <td>{{ maquina.marca }}</td>
+                    <td>{{ maquina.modelo }}</td>
+                    <td>{{ maquina.serial }}</td>
+                    <td>{{ maquina.estado_maquina }}</td>
+                    <td>
+                        {% if perms.maquinaria_agricola.change_maquina %}
+                            <a href="{% url 'maquina_update' maquina.pk %}" class="btn btn-sm btn-primary">Editar</a>
+                        {% endif %}
+                        {% if perms.maquinaria_agricola.delete_maquina %}
+                            <a href="{% url 'maquina_delete' maquina.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5">No hay máquinas registradas.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

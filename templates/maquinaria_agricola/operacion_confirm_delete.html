@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block title %}Eliminar Operación{% endblock %}
 {% block content %}
-    <h1 class="mb-4">Eliminar Operación</h1>
-    <p class="mb-4">¿Estás seguro de eliminar la operación {{ operacion }}?</p>
-    <form method="post" class="card p-4">
+    <h2 class="mb-4">Eliminar Operación</h2>
+    <p>¿Estás seguro de que deseas eliminar la operación "{{ operacion }}"?</p>
+    <form method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Eliminar</button>
         <a href="{% url 'operacion_list' %}" class="btn btn-secondary">Cancelar</a>

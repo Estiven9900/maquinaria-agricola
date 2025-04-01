@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Lista de Operaciones{% endblock %}
+{% block content %}
+    <h2 class="mb-4">Lista de Operaciones</h2>
+    {% if perms.maquinaria_agricola.add_operacion %}
+        <a href="{% url 'operacion_create' %}" class="btn btn-success mb-3">Crear Operación</a>
+    {% endif %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Máquina</th>
+                <th>Trabajador</th>
+                <th>Fecha Entrada</th>
+                <th>Fecha Salida</th>
+                <th>Área</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for operacion in operaciones %}
+                <tr>
+                    <td>{{ operacion.id_maquinaria }}</td>
+                    <td>{{ operacion.id_trabajador }}</td>
+                    <td>{{ operacion.fecha_entrada }}</td>
+                    <td>{{ operacion.fecha_salida|default:"En curso" }}</td>
+                    <td>{{ operacion.area }}</td>
+                    <td>
+                        {% if perms.maquinaria_agricola.change_operacion %}
+                            <a href="{% url 'operacion_update' operacion.pk %}" class="btn btn-sm btn-primary">Editar</a>
+                        {% endif %}
+                        {% if perms.maquinaria_agricola.delete_operacion %}
+                            <a href="{% url 'operacion_delete' operacion.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6">No hay operaciones registradas.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
