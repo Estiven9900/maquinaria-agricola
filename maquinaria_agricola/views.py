@@ -10,6 +10,7 @@ def home(request):
 @permission_required('maquinaria_agricola.view_maquina', raise_exception=True)
 def maquina_list(request):
     maquinas = Maquina.objects.all()
+    print("Máquinas encontradas:", maquinas)  # Agrega esto para depurar
     return render(request, 'maquinaria_agricola/maquina_list.html', {'maquinas': maquinas})
 
 @login_required
@@ -50,6 +51,7 @@ def maquina_delete(request, pk):
 @permission_required('maquinaria_agricola.view_complemento', raise_exception=True)
 def complemento_list(request):
     complementos = Complemento.objects.all()
+    print("Complementos encontrados:", complementos)  # Agrega esto para depurar
     return render(request, 'maquinaria_agricola/complemento_list.html', {'complementos': complementos})
 
 @login_required
@@ -90,6 +92,7 @@ def complemento_delete(request, pk):
 @permission_required('maquinaria_agricola.view_trabajador', raise_exception=True)
 def trabajador_list(request):
     trabajadores = Trabajador.objects.all()
+    print("Trabajadores encontrados:", trabajadores)  # Agrega esto para depurar
     return render(request, 'maquinaria_agricola/trabajador_list.html', {'trabajadores': trabajadores})
 
 @login_required
@@ -130,6 +133,7 @@ def trabajador_delete(request, pk):
 @permission_required('maquinaria_agricola.view_operacion', raise_exception=True)
 def operacion_list(request):
     operaciones = Operacion.objects.all()
+    print("Operaciones encontradas:", operaciones)  # Agrega esto para depurar
     return render(request, 'maquinaria_agricola/operacion_list.html', {'operaciones': operaciones})
 
 @login_required
