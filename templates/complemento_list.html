@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Listado de Complementos{% endblock %}
+{% block content %}
+    <h1 class="mb-4">Listado de Complementos</h1>
+    <a href="{% url 'complemento_create' %}" class="btn btn-primary mb-3">Nuevo Complemento</a>
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for complemento in complementos %}
+                <tr>
+                    <td>{{ complemento.nombre }}</td>
+                    <td>{{ complemento.tipo }}</td>
+                    <td>{{ complemento.estado }}</td>
+                    <td>
+                        <a href="{% url 'complemento_update' complemento.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'complemento_delete' complemento.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="4" class="text-center">No hay complementos registrados.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

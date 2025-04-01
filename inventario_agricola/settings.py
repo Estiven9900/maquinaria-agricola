@@ -27,10 +27,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 <<<<<<< HEAD
+<<<<<<< HEAD
     'tailwind',
     #'theme',
 =======
 >>>>>>> 55788e8 (Se configuro y se eliminaron directorios con sus archivos por el cambio de framework (Tailwind a boostrad). Se modifico el archivo requirements.txt por la misma razon mencionada antes y tambien por el cambio de version de django a 4.0.10)
+=======
+>>>>>>> 55788e8cc71ae90e11777df1e77596fed864e4eb
     'maquinaria_agricola',
 ]
 
